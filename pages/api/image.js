@@ -12,12 +12,12 @@ export default async function handler(req, res) {
     const response = await openai.createImage({
         prompt: req.body.prompt,
         n: 4,
-        size: "1024x1024",
+        size: "256x256",
     });
 
     if (!response.data) throw new Error('Unable to get image');
-    console.log('received url ' + response.data.data[0].url);
+
 
     // return response.data.data[0].url;
-    res.status(200).json({ imageURL: response.data.data[0].url })
+    res.status(200).json({ imageURL: response.data })
 }
