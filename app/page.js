@@ -32,15 +32,15 @@ export default function SearchPage() {
 
 
     return (
-        <div>
+        <div className="main-conatainer">
             <div className="search-box">
                 {/* <form action='/api/image' method="post"> */}
-                <form onSubmit={handleSubmit}>
+                <form class='input-form' onSubmit={handleSubmit}>
                     <button className="btn-search"><i className="fa fa-search"></i></button>
                     <input type="text" id="prompt" name="prompt" className="input-search" onChange={(e) => setPrompt(e.target.value)} placeholder="Generate Image with AI ..."></input>
                 </form>
             </div>
-            <div className='images'>
+            <div id='iframe-images' className='images'>
             {imageURL.map((item) => (
                 <div className="imageContainer">
                     <img src={item.url}/>

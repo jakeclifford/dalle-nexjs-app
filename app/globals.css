@@ -2,6 +2,16 @@
     box-sizing: border-box;
   }
 
+.input-form{
+    display: flex;
+    justify-content: center;
+}
+
+.main-conatainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .images {
   display: flex
