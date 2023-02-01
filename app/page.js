@@ -8,12 +8,10 @@ import { useState } from 'react';
 export default function SearchPage() {
     const [prompt, setPrompt] = useState('');
     const [imageURL, setImageURL] = useState([]);
-    const [loading, setLoading] = useState(0);
     const [selectedImage, setSelectedImage] = useState('')
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        setLoading(1);
         const response = await fetch('/api/image', {
             method: 'POST',
             headers: {
@@ -27,7 +25,10 @@ export default function SearchPage() {
         // setImageURL(imageResponse.imageURL)
         console.log(imageResponse.imageURL.data);
         setImageURL(imageResponse.imageURL.data);
-        setLoading(0);
+    }
+
+    function copyToClipboard(url){
+        navigator.clipboard.writeText(url)
     }
 
 
@@ -43,8 +44,10 @@ export default function SearchPage() {
             <div id='iframe-images' className='images'>
             {imageURL.map((item) => (
                 <div className="imageContainer">
-                    <img src={item.url}/>
-                </div>
+                    <a onClick={() => copyToClipboard(item.url)}>
+                        <img src={item.url}/>
+                    </a>
+                </div>    
             ))}
             </div>
         </div>
