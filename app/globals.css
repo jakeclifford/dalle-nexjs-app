@@ -18,6 +18,14 @@
   flex-wrap: wrap;
 }
 
-.image-container{
+.imageContainer{
   margin: 10px
+}
+
+.imageContainer:hover{
+  border: 1px solid grey;
+}
+
+.imageContainer:active{
+  border: 1px solid red;
 }

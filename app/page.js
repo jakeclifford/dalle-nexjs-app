@@ -27,13 +27,10 @@ export default function SearchPage() {
         setImageURL(imageResponse.imageURL.data);
     }
 
-    function copyToClipboard(url){
-        navigator.clipboard.writeText(url)
-    }
 
 
     return (
-        <div className="main-conatainer">
+        <div id="iframe-container" className="main-conatainer">
             <div className="search-box">
                 {/* <form action='/api/image' method="post"> */}
                 <form class='input-form' onSubmit={handleSubmit}>
@@ -44,7 +41,7 @@ export default function SearchPage() {
             <div id='iframe-images' className='images'>
             {imageURL.map((item) => (
                 <div className="imageContainer">
-                    <a onClick={() => copyToClipboard(item.url)}>
+                    <a>
                         <img src={item.url}/>
                     </a>
                 </div>    
