@@ -1,13 +1,17 @@
+import { Configuration, OpenAIApi } from "openai";
 const axios = require('axios');
 const fs = require('fs');
+const cloudinary = require('cloudinary').v2;
 
-
-import { Configuration, OpenAIApi } from "openai";
 const configuration = new Configuration({
-    // organization: "org-fzcWoVVemrdR8Gmg1r3qtWfQ",
     apiKey: process.env.OPENAI_API_KEY,
 });
 
+cloudinary.config({ 
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
+  api_key: process.env.CLOUDINARY_API_KEY, 
+  api_secret: process.env.CLOUDINARY_API_SECRET 
+});
 
 export default async function handler(req, res) {
     if (!req.body.prompt) return res.status(400).json({message: 'Pass in prompt field for image generation'});
@@ -19,16 +23,17 @@ export default async function handler(req, res) {
     });
 
     if (!response.data) throw new Error('Unable to get image');
-    
+
     res.status(200).json({ imageURL: response.data })
     let images = response.data.data
     for (let image of images){
-        //write code here to turn image url into jpg
-        const response = await axios.get(image.url, { responseType: 'arraybuffer' });
-        const buffer = new Buffer.from(response.data, 'binary');
-        const code = image.url.slice(-10)
-        fs.writeFileSync(`./images/${code}.jpg`, buffer, 'binary');
-    }
+        const imageResponse = await axios.get(image.url, {
+            responseType: 'arraybuffer'
+        });
 
-    
+        cloudinary.uploader.upload_stream({ resource_type: 'image' }, function(error, result) {
+            console.log(result, error);
+        })
+        .end(Buffer.from(imageResponse.data, 'binary'));
+    }
 }
