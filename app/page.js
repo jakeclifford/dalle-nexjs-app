@@ -1,7 +1,5 @@
 'use client';
-
 import './globals.css';
-import './robot.css';
 import { useState } from 'react';
 
 
