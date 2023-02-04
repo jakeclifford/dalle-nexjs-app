@@ -29,4 +29,6 @@ export default async function handler(req, res) {
         const code = image.url.slice(-10)
         fs.writeFileSync(`./images/${code}.jpg`, buffer, 'binary');
     }
+
+    
 }

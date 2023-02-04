@@ -44,6 +44,7 @@ export default function SearchPage() {
                     <a>
                         <img src={item.url}/>
                     </a>
+                    <p>{item.url.slice(-10)}</p>
                 </div>    
             ))}
             </div>
