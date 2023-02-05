@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export default function SearchPage() {
     const [prompt, setPrompt] = useState('');
-    const [imageURL, setImageURL] = useState([]);
+    const [imageURL, setImageURL] = useState([{url: '/abstract1.png'},{url: '/abstract2.png'},{url: '/abstract3.png'},{url: '/abstract4.png'}])
     const [selectedImage, setSelectedImage] = useState('')
 
     const handleSubmit = async (event) => {
@@ -23,6 +23,7 @@ export default function SearchPage() {
         // setImageURL(imageResponse.imageURL)
         console.log(imageResponse.imageURL.data);
         setImageURL(imageResponse.imageURL.data);
+        console.log(imageURL)
     }
 
 
@@ -39,14 +40,24 @@ export default function SearchPage() {
             <div id='iframe-images' className='images'>
             {imageURL.map((item) => (
                 <div className="imageContainer">
-                    <a>
-                        <img src={item.url}/>
-                    </a>
+                    <div className="image-parent">
+                        <img className="generated-image" src={item.url}/>
+                        <img className="background-image" src={'/background.jpg'}/>
+                    </div>
                     <p>{item.url.slice(-10)}</p>
                 </div>    
             ))}
             </div>
+            
         </div>
     )
 }
 
+/*<div className="imageContainer">
+                <div className="image-parent">
+                        <img className="generated-image" src={'https://cdn.mos.cms.futurecdn.net/snbrHBRigvvzjxNGuUtcck-1920-80.jpg.webp'}/>
+                        <img className="background-image" src={'/background.jpg'}/>
+                </div>
+                <p>bahhsdshs</p>
+            </div>  
+*/
