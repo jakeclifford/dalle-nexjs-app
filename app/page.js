@@ -1,12 +1,12 @@
 'use client';
 import './globals.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 export default function SearchPage() {
     const [prompt, setPrompt] = useState('');
     const [imageURL, setImageURL] = useState([{url: '/abstract1.png'},{url: '/abstract2.png'},{url: '/abstract3.png'},{url: '/abstract4.png'}])
-    const [selectedImage, setSelectedImage] = useState('')
+    const [selectedImage, setSelectedImage] = useState(imageURL[0].url)
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -25,6 +25,12 @@ export default function SearchPage() {
         setImageURL(imageResponse.imageURL.data);
         console.log(imageURL)
     }
+    
+    const handleClick = url => {
+            setSelectedImage(url);
+    };
+ 
+
 
 
 
@@ -38,15 +44,18 @@ export default function SearchPage() {
                 </form>
             </div>
             <div id='iframe-images' className='images'>
-            {imageURL.map((item) => (
-                <div className="imageContainer">
-                    <div className="image-parent">
-                        <img className="generated-image" src={item.url}/>
+            <div className="imageContainer">
+                <div className="image-parent">
+                        <img className="generated-image" src={selectedImage}/>
                         <img className="background-image" src={'/background.jpg'}/>
-                    </div>
-                    <p>{item.url.slice(-10)}</p>
-                </div>    
+                </div>
+                <p>{imageURL[0].url.slice(-10)}</p>
+            </div>
+            <div className="options-container">
+            {imageURL.map((item, index) => (
+                <img className="option-image"src={item.url} onClick={() => handleClick(item.url)}/>  
             ))}
+            </div>   
             </div>
             
         </div>
