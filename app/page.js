@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 export default function SearchPage() {
     const [prompt, setPrompt] = useState('');
-    const [imageURL, setImageURL] = useState([{url: '/1.png'},{url: '/2.png'},{url: '/3.png'},{url: '/4.png'}])
+    const [imageURL, setImageURL] = useState([{url: '/1.webp'},{url: '/2.webp'},{url: '/3.webp'},{url: '/4.webp'}])
     const [selectedImage, setSelectedImage] = useState(imageURL[0].url)
 
     const handleSubmit = async (event) => {
@@ -47,7 +47,7 @@ export default function SearchPage() {
                 <div className="imageContainer">
                     <div className="image-parent">
                             <img className="generated-image" src={selectedImage}/>
-                            <img className="background-image" src={'/background.jpg'}/>
+                            <img className="background-image" src={'/background.webp'}/>
                     </div>
                 </div>
                     <div className="options-container">
