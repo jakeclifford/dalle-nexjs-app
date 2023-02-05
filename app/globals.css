@@ -79,7 +79,7 @@ body {
 #prompt{
   padding: 10px 20px;
   border: 1px solid rgb(161, 161, 161);
-  border-radius: 50px;
+  border-radius: 10px;
   width: 100%;
   font-size: 1em;
   max-width: 500px;
@@ -90,7 +90,7 @@ body {
 }
 
 .btn-search {
-  border-radius: 50px;
+  border-radius: 10px;
   border: none;
   background: #277d9f;
   color: white;
