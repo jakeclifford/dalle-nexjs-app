@@ -28,13 +28,6 @@ body {
   margin: 10px
 }
 
-.imageContainer:hover{
-  border: 1px solid grey;
-}
-
-.imageContainer:active{
-  border: 1px solid red;
-}
 
 .image-parent {
   position: relative;
@@ -86,8 +79,9 @@ body {
   padding: 10px 20px;
   border: 1px solid rgb(161, 161, 161);
   border-radius: 50px;
-  width: 80%;
+  width: 100%;
   font-size: 1em;
+  max-width: 500px;
 }
 
 #prompt:hover, .btn-search:hover {
@@ -102,4 +96,12 @@ body {
   margin-left: 5px;
   padding: 10px 20px;
   font-size: 1em;
+}
+
+@media only screen and (max-width: 1000px) {
+  .options-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: none;
+  }
 }

@@ -44,20 +44,19 @@ export default function SearchPage() {
                 </form>
             </div>
             <div id='iframe-images' className='images'>
-            <div className="imageContainer">
-                <div className="image-parent">
-                        <img className="generated-image" src={selectedImage}/>
-                        <img className="background-image" src={'/background.jpg'}/>
+                <div className="imageContainer">
+                    <div className="image-parent">
+                            <img className="generated-image" src={selectedImage}/>
+                            <img className="background-image" src={'/background.jpg'}/>
+                    </div>
+                </div>
+                    <div className="options-container">
+                        {imageURL.map((item, index) => (
+                            <img className="option-image"src={item.url} onClick={() => handleClick(item.url)}/>  
+                        ))}
+                    </div>   
                 </div>
                 <p className='magic-container'>Your Magic Code -<span className='actual-code'>{selectedImage.slice(-10)}</span></p>
-            </div>
-            <div className="options-container">
-            {imageURL.map((item, index) => (
-                <img className="option-image"src={item.url} onClick={() => handleClick(item.url)}/>  
-            ))}
-            </div>   
-            </div>
-            
         </div>
     )
 }
