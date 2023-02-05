@@ -46,16 +46,16 @@ body {
   position: relative;
   top: 0;
   left: 0;
-  height: 400px;
-  width:  400px;
+  height: 500px;
+  width:  500px;
 }
 
 .generated-image {
   position: absolute;
-  top: 29px;
-  left: 47px;
-  height: 156px;
-  width:156px;
+  top: 57px;
+  left: 94px;
+  height: 312px;
+  width:312px;
   z-index: 50;
 }
 
@@ -71,7 +71,16 @@ body {
   flex-wrap: wrap;
 }
 
+.magic-container {
+  text-align: center;
+}
 
+.actual-code {
+  font-size: 1.5em;
+  color: #277d9f;
+  font-weight: 500;
+  background: white;
+}
 
 #prompt{
   padding: 10px 20px;

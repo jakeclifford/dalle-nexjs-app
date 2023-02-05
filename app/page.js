@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 export default function SearchPage() {
     const [prompt, setPrompt] = useState('');
-    const [imageURL, setImageURL] = useState([{url: '/abstract1.png'},{url: '/abstract2.png'},{url: '/abstract3.png'},{url: '/abstract4.png'}])
+    const [imageURL, setImageURL] = useState([{url: '/1.png'},{url: '/2.png'},{url: '/3.png'},{url: '/4.png'}])
     const [selectedImage, setSelectedImage] = useState(imageURL[0].url)
 
     const handleSubmit = async (event) => {
@@ -39,7 +39,7 @@ export default function SearchPage() {
             <div className="search-box">
                 {/* <form action='/api/image' method="post"> */}
                 <form class='input-form' onSubmit={handleSubmit}>
-                    <input type="text" id="prompt" name="prompt" className="input-search" onChange={(e) => setPrompt(e.target.value)} placeholder="Abstract Gemometric shapes"></input>
+                    <input type="text" id="prompt" name="prompt" className="input-search" onChange={(e) => setPrompt(e.target.value)} placeholder="Trippy Einstien"></input>
                     <button className="btn-search">Generate</button>
                 </form>
             </div>
@@ -49,7 +49,7 @@ export default function SearchPage() {
                         <img className="generated-image" src={selectedImage}/>
                         <img className="background-image" src={'/background.jpg'}/>
                 </div>
-                <p>{imageURL[0].url.slice(-10)}</p>
+                <p className='magic-container'>Your Magic Code -<span className='actual-code'>{selectedImage.slice(-10)}</span></p>
             </div>
             <div className="options-container">
             {imageURL.map((item, index) => (
