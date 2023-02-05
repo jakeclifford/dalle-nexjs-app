@@ -32,8 +32,8 @@ export default function SearchPage() {
             <div className="search-box">
                 {/* <form action='/api/image' method="post"> */}
                 <form class='input-form' onSubmit={handleSubmit}>
-                    <button className="btn-search"><i className="fa fa-search"></i></button>
-                    <input type="text" id="prompt" name="prompt" className="input-search" onChange={(e) => setPrompt(e.target.value)} placeholder="Generate Image with AI ..."></input>
+                    <input type="text" id="prompt" name="prompt" className="input-search" onChange={(e) => setPrompt(e.target.value)} placeholder="Abstract Gemometric shapes"></input>
+                    <button className="btn-search">Generate</button>
                 </form>
             </div>
             <div id='iframe-images' className='images'>
