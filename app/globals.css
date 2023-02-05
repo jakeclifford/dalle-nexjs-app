@@ -98,7 +98,7 @@ body {
   font-size: 1em;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 750px) {
   .options-container {
     display: flex;
     flex-direction: row;
