@@ -86,7 +86,7 @@ body {
   padding: 10px 20px;
   border: 1px solid rgb(161, 161, 161);
   border-radius: 50px;
-  min-width: 300px;
+  width: 100%;
   font-size: 1em;
 }
 
