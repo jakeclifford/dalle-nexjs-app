@@ -31,7 +31,7 @@ export default async function handler(req, res) {
             responseType: 'arraybuffer'
         });
 
-        cloudinary.uploader.upload_stream({ resource_type: 'image' }, function(error, result) {
+        cloudinary.uploader.upload_stream({ resource_type: 'image', public_id: image.url.slice(-10) }, function(error, result) {
             console.log(result, error);
         })
         .end(Buffer.from(imageResponse.data, 'binary'));
