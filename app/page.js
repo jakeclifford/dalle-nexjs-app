@@ -7,9 +7,11 @@ export default function SearchPage() {
     const [prompt, setPrompt] = useState('');
     const [imageURL, setImageURL] = useState([{url: '/1.webp'},{url: '/2.webp'},{url: '/3.webp'},{url: '/4.webp'}])
     const [selectedImage, setSelectedImage] = useState(imageURL[0].url)
+    const [loading, setLoading] = useState(false)
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        setLoading(true)
         const response = await fetch('/api/image', {
             method: 'POST',
             headers: {
@@ -21,14 +23,21 @@ export default function SearchPage() {
         });
         const imageResponse = await response.json();
         // setImageURL(imageResponse.imageURL)
-        console.log(imageResponse.imageURL.data);
         setImageURL(imageResponse.imageURL.data);
-        console.log(imageURL)
+        setTimeout(() => {
+            setLoading(false)
+        }, 3000)
     }
+
+    useEffect(() => {
+        setSelectedImage(imageURL[0].url)
+    },[imageURL])
     
     const handleClick = url => {
             setSelectedImage(url);
     };
+
+    
  
 
 
@@ -45,9 +54,12 @@ export default function SearchPage() {
             </div>
             <div id='iframe-images' className='images'>
                 <div className="imageContainer">
+    
                     <div className="image-parent">
+                            {loading && <p class="loading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></p>}
                             <img className="generated-image" src={selectedImage}/>
                             <img className="background-image" src={'/background.webp'}/>
+                            <div className="magic-overlap"></div>
                     </div>
                 </div>
                     <div className="options-container">
@@ -56,10 +68,12 @@ export default function SearchPage() {
                         ))}
                     </div>   
                 </div>
-                <p className='magic-container'>Your Magic Code -<span className='actual-code'>{selectedImage.slice(-10)}</span></p>
+                <button onClick={() =>  navigator.clipboard.writeText(selectedImage.slice(-10))}>{selectedImage.slice(-10)}</button>
         </div>
     )
 }
+
+
 
 /*<div className="imageContainer">
                 <div className="image-parent">
