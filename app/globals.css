@@ -67,13 +67,25 @@ body {
 
 .magic-container {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  justify-content: center;
 }
 
 .actual-code {
-  font-size: 1.5em;
-  color: #277d9f;
-  font-weight: 500;
+  position: absolute;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 0px 5px;
+  bottom: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
+
+
 
 #prompt{
   padding: 10px 20px;
@@ -105,13 +117,6 @@ body {
   z-index: 100;
 }
 
-.magic-overlap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0);
-}
 
 @media only screen and (max-width: 750px) {
   .options-container {

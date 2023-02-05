@@ -5,9 +5,10 @@ import { useEffect, useState } from 'react';
 
 export default function SearchPage() {
     const [prompt, setPrompt] = useState('');
-    const [imageURL, setImageURL] = useState([{url: '/1.webp'},{url: '/2.webp'},{url: '/3.webp'},{url: '/4.webp'}])
+    const [imageURL, setImageURL] = useState([{url: '/einstein1.webp'},{url: '/einstein2.webp'},{url: '/einstein3.webp'},{url: '/einstein4.webp'}])
     const [selectedImage, setSelectedImage] = useState(imageURL[0].url)
     const [loading, setLoading] = useState(false)
+    const [nocode, setNocode] = useState(false)
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -24,6 +25,7 @@ export default function SearchPage() {
         const imageResponse = await response.json();
         // setImageURL(imageResponse.imageURL)
         setImageURL(imageResponse.imageURL.data);
+        setNocode(true)
         setTimeout(() => {
             setLoading(false)
         }, 3000)
@@ -59,7 +61,7 @@ export default function SearchPage() {
                             {loading && <p class="loading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></p>}
                             <img className="generated-image" src={selectedImage}/>
                             <img className="background-image" src={'/background.webp'}/>
-                            <div className="magic-overlap"></div>
+                            <p className='actual-code'>{nocode ? selectedImage.slice(-10): selectedImage.slice(1, 10)}</p>
                     </div>
                 </div>
                     <div className="options-container">
@@ -68,7 +70,6 @@ export default function SearchPage() {
                         ))}
                     </div>   
                 </div>
-                <button onClick={() =>  navigator.clipboard.writeText(selectedImage.slice(-10))}>{selectedImage.slice(-10)}</button>
         </div>
     )
 }
