@@ -36,8 +36,9 @@ export default function SearchPage() {
     },[imageURL])
     
     const handleClick = url => {
-            setSelectedImage(url);
+        setSelectedImage(url);
     };
+
 
     
  
@@ -66,7 +67,9 @@ export default function SearchPage() {
                 </div>
                     <div className="options-container">
                         {imageURL.map((item, index) => (
-                            <img className="option-image"src={item.url} onClick={() => handleClick(item.url)}/>  
+                            <img className="option-image"src={item.url} onClick={() => {
+                                handleClick(item.url)
+                            }}/>  
                         ))}
                     </div>   
                 </div>
