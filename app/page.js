@@ -44,7 +44,7 @@ export default function SearchPage() {
     return (
         <div id="iframe-container" className="main-conatainer">
             <div className="search-box">
-            {generations < 2 && <div class="klaviyo-form-U53aKT"></div>}
+            {generations > 2 && <div class="klaviyo-form-U53aKT"></div>}
                 <form class='input-form' onSubmit={handleSubmit}>
                     <input type="text" id="prompt" name="prompt" className="input-search" onChange={(e) => setPrompt(e.target.value)} placeholder="Trippy Einstien"></input>
                     <button className="btn-search">Generate</button>
