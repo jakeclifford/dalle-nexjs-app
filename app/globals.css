@@ -17,11 +17,17 @@ body {
 }
 
 .klaviyo-form-U53aKT {
+  max-width: 700px;
+}
+
+.klaviyo {
   top: 0;
   left: 0;
   z-index: 100;
   position: absolute;
-  width: 90%
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .main-conatainer{
