@@ -12,6 +12,17 @@ body {
     justify-content: center;
 }
 
+.search-box {
+  position: relative;
+}
+
+.klaviyo-form-U53aKT {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
 .main-conatainer{
   display: flex;
   flex-direction: column;

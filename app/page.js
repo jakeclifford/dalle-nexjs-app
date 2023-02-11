@@ -41,23 +41,14 @@ export default function SearchPage() {
         setSelectedImage(url);
     };
 
-
-    
- 
-
-
-
-
     return (
         <div id="iframe-container" className="main-conatainer">
             <div className="search-box">
-                {generations < 2 ?
                     <form class='input-form' onSubmit={handleSubmit}>
                         <input type="text" id="prompt" name="prompt" className="input-search" onChange={(e) => setPrompt(e.target.value)} placeholder="Trippy Einstien"></input>
                         <button className="btn-search">Generate</button>
-                    </form> :
-                    <div class="klaviyo-form-U53aKT"></div>
-                }
+                    </form>
+                 {generations < 2 && <div class="klaviyo-form-U53aKT"></div>} 
             </div>
             <div id='iframe-images' className='images'>
                 <div className="imageContainer">
