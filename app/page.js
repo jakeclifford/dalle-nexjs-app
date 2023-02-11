@@ -9,6 +9,7 @@ export default function SearchPage() {
     const [selectedImage, setSelectedImage] = useState(imageURL[0].url)
     const [loading, setLoading] = useState(false)
     const [nocode, setNocode] = useState(false)
+    const [generations, setGenerations] = useState(0)
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -29,6 +30,7 @@ export default function SearchPage() {
         setTimeout(() => {
             setLoading(false)
         }, 3000)
+        setGenerations(generations + 1)
     }
 
     useEffect(() => {
@@ -48,13 +50,14 @@ export default function SearchPage() {
 
     return (
         <div id="iframe-container" className="main-conatainer">
-            <div class="klaviyo-form-U53aKT"></div>
             <div className="search-box">
-                {/* <form action='/api/image' method="post"> */}
-                <form class='input-form' onSubmit={handleSubmit}>
-                    <input type="text" id="prompt" name="prompt" className="input-search" onChange={(e) => setPrompt(e.target.value)} placeholder="Trippy Einstien"></input>
-                    <button className="btn-search">Generate</button>
-                </form>
+                {generations < 2 ?
+                    <form class='input-form' onSubmit={handleSubmit}>
+                        <input type="text" id="prompt" name="prompt" className="input-search" onChange={(e) => setPrompt(e.target.value)} placeholder="Trippy Einstien"></input>
+                        <button className="btn-search">Generate</button>
+                    </form> :
+                    <div class="klaviyo-form-U53aKT"></div>
+                }
             </div>
             <div id='iframe-images' className='images'>
                 <div className="imageContainer">
