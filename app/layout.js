@@ -4,7 +4,10 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
       </head>
-      <body>{children}</body>
+      <body>
+      {children}
+      <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=RDtuDj"></script>
+      </body>
     </html>
   )
 }
