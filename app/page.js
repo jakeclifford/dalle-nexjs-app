@@ -48,6 +48,7 @@ export default function SearchPage() {
 
     return (
         <div id="iframe-container" className="main-conatainer">
+            <div class="klaviyo-form-U53aKT"></div>
             <div className="search-box">
                 {/* <form action='/api/image' method="post"> */}
                 <form class='input-form' onSubmit={handleSubmit}>
