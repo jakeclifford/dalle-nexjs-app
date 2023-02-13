@@ -46,7 +46,7 @@ export default function SearchPage() {
             <div className="search-box">
             {generations > 2 && <div className='klaviyo'><div class="klaviyo-form-U53aKT"></div></div>}
                 <form class='input-form' onSubmit={handleSubmit}>
-                    <input type="text" id="prompt" name="prompt" className="input-search" onChange={(e) => setPrompt(e.target.value)} placeholder="Trippy Einstien"></input>
+                    <input type="text" id="prompt" name="prompt" className="input-search" onChange={(e) => setPrompt(e.target.value)} placeholder="Trippy Einstien" autoComplete='off'></input>
                     <button className="btn-search">Generate</button>
                 </form> 
             </div>
