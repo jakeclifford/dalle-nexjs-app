@@ -13,19 +13,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET 
 });
 
-export default async function handler(req, res) {
-    if (!req.body.prompt) return res.status(400).json({message: 'Pass in prompt field for image generation'});
-    const openai = new OpenAIApi(configuration);
-    const response = await openai.createImage({
-        prompt: req.body.prompt,
-        n: 4,
-        size: "512x512",
-    });
-
-    if (!response.data) throw new Error('Unable to get image');
-
-    res.status(200).json({ imageURL: response.data })
-    let images = response.data.data
+async function cloudUpload(images){
     for (let image of images){
         const imageResponse = await axios.get(image.url, {
             responseType: 'arraybuffer'
@@ -37,3 +25,19 @@ export default async function handler(req, res) {
         .end(Buffer.from(imageResponse.data, 'binary'));
     }
 }
+
+export default async function handler(req, res) {
+    if (!req.body.prompt) return res.status(400).json({message: 'Pass in prompt field for image generation'});
+    const openai = new OpenAIApi(configuration);
+    const response = await openai.createImage({
+        prompt: req.body.prompt,
+        n: 4,
+        size: "512x512",
+    });
+
+    if (!response.data) throw new Error('Unable to get image');
+    let images = response.data.data
+    cloudUpload(images)
+    res.status(200).json({ imageURL: response.data })
+}
+
