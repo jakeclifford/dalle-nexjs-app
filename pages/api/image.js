@@ -13,13 +13,13 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET 
 });
 
-async function cloudUpload(images){
+async function cloudUpload(images, req){
     for (let image of images){
         const imageResponse = await axios.get(image.url, {
             responseType: 'arraybuffer'
         });
 
-        cloudinary.uploader.upload_stream({ resource_type: 'image', public_id: image.url.slice(-10) }, function(error, result) {
+        cloudinary.uploader.upload_stream({ resource_type: 'image', public_id: image.url.slice(-10), prompt: req.body.prompt }, function(error, result) {
             console.log(result, error);
         })
         .end(Buffer.from(imageResponse.data, 'binary'));
@@ -37,7 +37,9 @@ export default async function handler(req, res) {
 
     if (!response.data) throw new Error('Unable to get image');
     let images = response.data.data
-    cloudUpload(images)
     res.status(200).json({ imageURL: response.data })
+    setTimeout(() => {
+        cloudUpload(images, req)
+    }, 3000)
 }
 
