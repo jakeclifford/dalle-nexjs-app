@@ -88,8 +88,9 @@ body {
 .options-container {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
+  height: 500px;
+  overflow: scroll;
+  width: 140px
 }
 
 .magic-container {

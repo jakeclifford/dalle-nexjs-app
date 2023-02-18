@@ -24,7 +24,7 @@ export default function SearchPage() {
         });
         const imageResponse = await response.json();
         // setImageURL(imageResponse.imageURL)
-        setImageURL(imageResponse.imageURL.data);
+        setImageURL([...imageResponse.imageURL.data, ...imageURL,]);
         setNocode(true)
         setTimeout(() => {
             setLoading(false)
