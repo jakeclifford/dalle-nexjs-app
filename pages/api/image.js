@@ -13,10 +13,9 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET 
 });
 
-function cloudUpload(images, req){
-    for (let image of images){
-        uploader(image, req)
-    }
+async function cloudUpload(images, req){
+    const uploadPromises = images.map(image => uploader(image, req));
+    await Promise.all(uploadPromises);
 }
 
 async function uploader(image, req){

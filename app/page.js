@@ -2,6 +2,8 @@
 import './globals.css';
 import { useEffect, useState } from 'react';
 
+import { Cloudinary } from 'cloudinary-core';
+const cloudinary = new Cloudinary({ cloud_name: 'dvo1bkh6y' });
 
 export default function SearchPage() {
     const [prompt, setPrompt] = useState('');
@@ -33,6 +35,23 @@ export default function SearchPage() {
         setGenerations(generations + 1)
     }
 
+    const handleUpload = async () => {
+        try {
+          const response = await fetch(`https://api.cloudinary.com/v1_1/dvo1bkh6y/image/upload`, {
+            method: 'POST',
+            body: JSON.stringify({ file: selectedImage, upload_preset: 'qah3zhgt' }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+          const data = await response.json();
+          console.log(data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+
     useEffect(() => {
         setSelectedImage(imageURL[0].url)
     },[imageURL])
@@ -57,7 +76,7 @@ export default function SearchPage() {
                             {loading && <p class="loading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></p>}
                             <img className="generated-image" src={selectedImage}/>
                             <img className="background-image" src={'/background.webp'}/>
-                            <p className='actual-code'>{nocode ? selectedImage.slice(-10): selectedImage.slice(1, 10)}</p>
+                            <button className='actual-code' onClick={handleUpload}>{nocode ? selectedImage.slice(-10): selectedImage.slice(1, 10)}</button>
                     </div>
                 </div>
                     <div className="options-container">
