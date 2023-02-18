@@ -57,7 +57,7 @@ export default function SearchPage() {
                             {loading && <p class="loading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></p>}
                             <img className="generated-image" src={selectedImage}/>
                             <img className="background-image" src={'/background.webp'}/>
-                            <button className='actual-code'>{nocode ? selectedImage.slice(-10): selectedImage.slice(1, 10)}</button>
+                            <p className='actual-code'>{nocode ? selectedImage.slice(-10): selectedImage.slice(1, 10)}</p>
                     </div>
                 </div>
                     <div className="options-container">
