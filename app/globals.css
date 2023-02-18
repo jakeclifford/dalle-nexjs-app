@@ -152,6 +152,7 @@ body {
     flex-direction: row;
     flex-wrap: none;
     width: 100vw;
+    height: fit-content;
   }
 
   .option-image {
